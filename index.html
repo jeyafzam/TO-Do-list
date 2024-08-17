@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>To-Do List App</title>
+        <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Abril+Fatface:400,700" rel="stylesheet"/>
+       <link rel="stylesheet" href="./assets/css/style.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="todo-app">
+                <h2>To-Do list <img src="./assets/image/To-do-list-icon-Graphics-17618184-1-1-580x386.jpg"></h2>
+                <div class="row">
+                    <input class="input" placeholder="please enter your task!">
+                    <button onclick="add()">add</button>
+                </div>
+                <ol class="list"></ol>              
+            </div>
+        </div>
+        <script>
+            function resetInput(input){
+               input.value="";
+               input.focus();
+        }
+            function add(){
+            var input=document.querySelector(".input");
+            if(input.value.trim().length>=3){
+            var list=document.querySelector(".list");
+            var li=document.createElement("LI");
+            var deletElement=document.createElement("SPAN");
+            li.innerHTML=input.value;
+            li.appendChild(deletElement);
+            deletElement.innerHTML="X";
+            list.appendChild(li);
+            li.classList.add("item");
+            deletElement.classList.add("deletItem");
+            resetInput(input)
+            }else {
+            alert("please enter 3 char at least");
+            resetInput(input)
+           }
+        }
+        document.querySelector(".input").focus();
+        </script>
+    </body>
+</html>
