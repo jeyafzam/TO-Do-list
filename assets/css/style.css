@@ -11,7 +11,7 @@ body{
     width: 100%;
     min-height: 100vh;
     padding: 10px;
-    background: linear-gradient(135deg, #153677,#4e085f);
+    background: linear-gradient(135deg, #3d69bf, #b4a8b7);
 }
 .todo-app{
     width: 100%;
@@ -39,14 +39,16 @@ body{
     padding-left: 20px;
     margin-bottom: 25px;
 }
-.todo-app .row .input{
+.todo-app .row .input-box{
     flex: 1;
     border: none;
     outline: none;
     background: transparent;
     padding: 10px;
+    font-size: 18px;
+    font-family:"sans-serif";
 }
-.todo-app .row .input::placeholder{
+.todo-app .row .input-box::placeholder{
     font-size: 18px;
     font-family:"sans-serif";
     color: #002764;
@@ -55,23 +57,59 @@ body{
     border: none;
     outline: none;
     padding: 16px 45px;
-    background: #ff5945;
-    color:#fff;
+    background: #835df7;
+    color:#090356;
     font-size: 18px;
     cursor: pointer;
     border-radius: 40px;
 }
-.todo-app .list .item{
+.todo-app ul li{
     display: flex;
     justify-content: space-between;
-    font-size: 20px;
-    padding: 12px 0;
-    font-family:"sans-serif";
-    color: #002764;
-}
-.list li .deletItem{
-    color: red;
-    display: inline-block;
-    margin-left: 10px;
+    align-items: center;
+    text-align: center;
+    list-style: none;
+    font-size: 17px;
+    padding: 12px 8px 12px 50px;
+    margin-bottom: 10px;
+    background: #a1c9f3;
+    border-radius: 30px;
     cursor: pointer;
+    position: relative;
+}
+.todo-app ul li::before{
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-image:url(../image//unchecked.png);
+    background-size: cover;
+    background-position: center;
+    top:12px;
+    left:8px;
+
+}
+.todo-app ul li.checked{
+    color:#555;
+    text-decoration: line-through;
+}
+.todo-app ul li.checked::before{
+    background-image:url(../image/images\ \(1\).png);
+}
+.todo-app ul li span{
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 22px;
+    color: #090356;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 2s;
+}
+.todo-app ul li span:hover{
+    background: #859ac5;
 }

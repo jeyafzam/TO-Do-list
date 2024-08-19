@@ -6,23 +6,46 @@
     </head>
     <body>
         <div class="container">
-            <div class="todo-app">
+            <div id="a" class="todo-app">
                 <h2>To-Do list <img src="./assets/image/To-do-list-icon-Graphics-17618184-1-1-580x386.jpg"></h2>
                 <div class="row">
-                    <input class="input" placeholder="please enter your task!">
-                    <button onclick="add()">add</button>
-                </div>
-                <ol class="list"></ol>              
+                    <input class="input-box" type="text" placeholder="please enter your task!">
+                    <button onclick="addTask()">add</button>
+                </div>            
             </div>
         </div>
         <script>
-            function resetInput(input){
-               input.value="";
-               input.focus();
+            var input=document.querySelector(".input-box");
+            input.focus();
+            input.addEventListener("keydown", function(e){
+            if(e.key=="Enter"){
+                addTask();
+            }
+        })
+        function createUl(){
+            var ul=document.createElement("UL");
+            var a=document.getElementById("a");
+            a.appendChild(ul);
+            ul.classList.add("list");
         }
-            function add(){
-            var input=document.querySelector(".input");
-            if(input.value.trim().length>=3){
+        createUl()
+        function resetInput(input){
+            input.value="";
+            input.focus();
+        }
+
+        function addTask(){
+            var input=document.querySelector(".input-box");
+            if (input.value.trim().length==0){
+                alert("pelease fillout task filled");
+                resetInput(input)
+                return
+            }
+            if (input.value.trim().length<=3){
+                alert("please enter 3 char at least");
+                resetInput(input);
+                return
+            }
             var list=document.querySelector(".list");
             var li=document.createElement("LI");
             var deletElement=document.createElement("SPAN");
@@ -33,12 +56,14 @@
             li.classList.add("item");
             deletElement.classList.add("deletItem");
             resetInput(input)
-            }else {
-            alert("please enter 3 char at least");
-            resetInput(input)
-           }
+            deletElement.addEventListener("click", function(e){
+                e.target.parentNode.remove();
+            })
+            li.appendChild(deletElement);
+            li.addEventListener("click", function(e){
+                e.target.classList.toggle("checked");
+            })
         }
-        document.querySelector(".input").focus();
         </script>
     </body>
 </html>
