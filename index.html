@@ -2,6 +2,8 @@
     <head>
         <title>To-Do List App</title>
         <link href="https://fonts.googleapis.com/css?family=Mukta+Mahee:200,300,400|Abril+Fatface:400,700" rel="stylesheet"/>
+        <link rel="stylesheet" href="./assets/css/fontawesome.css">
+        <link rel="stylesheet" href="./assets/css/solid.css">
        <link rel="stylesheet" href="./assets/css/style.css">
     </head>
     <body>
@@ -48,13 +50,12 @@
             }
             var list=document.querySelector(".list");
             var li=document.createElement("LI");
-            var deletElement=document.createElement("SPAN");
+            var deletElement=document.createElement("I");
+            deletElement.classList.add("fa-solid", "fa-trash-can")
             li.innerHTML=input.value;
             li.appendChild(deletElement);
-            deletElement.innerHTML="X";
             list.appendChild(li);
             li.classList.add("item");
-            deletElement.classList.add("deletItem");
             resetInput(input)
             deletElement.addEventListener("click", function(e){
                 e.target.parentNode.remove();
